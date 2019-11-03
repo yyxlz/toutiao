@@ -12,7 +12,12 @@ import axios from '@/api'
 // import MyBread from '@/components/my-bread'
 // Vue.component('my-bread', MyBread)
 import MyBread from '@/components/my-bread'
+//  封装组件
+import MyChannel from './components/my-channel'
+import '@/styles/index.less'
+
 Vue.component('my-bread', MyBread)
+Vue.component('my-channel', MyChannel)
 Vue.prototype.$http = axios
 
 // 使用 axios  在任何一个vue实例中 都可以引用 axios

@@ -10,6 +10,7 @@ import Welcome from '../views/Welcome/index.vue'
 import local from '../utils/index'
 import article from '../views/article/index.vue'
 import NotFound from '../views/404/index.vue'
+import Image from '../views/image/index.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
@@ -31,6 +32,10 @@ const router = new VueRouter({
         {
           path: 'article',
           component: article
+        },
+        {
+          path: '/image',
+          component: Image
         }
       ]
     },
