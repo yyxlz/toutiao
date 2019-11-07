@@ -11,6 +11,10 @@ import local from '../utils/index'
 import article from '../views/article/index.vue'
 import NotFound from '../views/404/index.vue'
 import Image from '../views/image/index.vue'
+import Publish from '../views/publish/index.vue'
+import Comment from '../views/comment/index.vue'
+import Setting from '../views/setting/index.vue'
+import FANS from '../views/fans/index.vue'
 Vue.use(VueRouter)
 const router = new VueRouter({
   routes: [
@@ -36,6 +40,22 @@ const router = new VueRouter({
         {
           path: '/image',
           component: Image
+        },
+        {
+          path: '/publish',
+          component: Publish
+        },
+        {
+          path: '/comment',
+          component: Comment
+        },
+        {
+          path: '/setting',
+          component: Setting
+        },
+        {
+          path: '/fans',
+          component: FANS
         }
       ]
     },
@@ -56,7 +76,6 @@ router.beforeEach(function (to, from, next) {
   if (to.path !== '/login' && !user) {
     return next('/login')
   }
-  console.log('执行')
 
   next()
 })

@@ -9,7 +9,7 @@
           <el-radio-button :label="false">全部</el-radio-button>
           <el-radio-button :label="true">收藏</el-radio-button>
         </el-radio-group>
-        <el-button type="success" size="small" style="float:right" @click="dialogVisible=true">添加素材</el-button>
+        <el-button type="success" size="small" style="float:right" @click="open">添加素材</el-button>
       </div>
       <div class="img_list">
         <div class="img_item" v-for="item in images" :key="item.id">
@@ -37,20 +37,26 @@
       <!-- page-size  每页多少条-->
     </el-card>
     <!-- 对话框 -->
+    <!-- <el-dialog title="添加素材" :visible.sync="dialogVisible" width="300px"> -->
     <el-dialog title="添加素材" :visible.sync="dialogVisible" width="300px">
-      <el-upload
+
+     <el-upload
         class="avatar-uploader"
-        action="https://jsonplaceholder.typicode.com/posts/"
+        action="http://ttapi.research.itcast.cn/mp/v1_0/user/images"
+        :headers="headers"
+        name="image"
+        :on-success="handleSuccess"
         :show-file-list="false"
       >
         <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        <i v-else class="el-icon-plus avatar-uploader-icon11"></i>
       </el-upload>
     </el-dialog>
   </div>
 </template>
 
 <script>
+import local from '../../utils/index'
 export default {
   data () {
     return {
@@ -62,7 +68,10 @@ export default {
       images: [],
       total: 0,
       dialogVisible: false,
-      imageUrl: null
+      imageUrl: null,
+      headers: {
+        Authorization: `Bearer ${local.getuser().token}`
+      }
     }
   },
 
@@ -114,6 +123,20 @@ export default {
         .catch(() => {
           // 点击了取消
         })
+    },
+    handleSuccess (res) {
+      this.imageUrl = res.data.url
+      this.$message.success('文件上传成功')
+      window.setTimeout(() => {
+        // 关闭
+        this.dialogVisible = false
+        // 更新列表
+        this.getImages()
+      }, 1000)
+    },
+    open () {
+      this.dialogVisible = true
+      this.imageUrl = null
     }
   }
 }

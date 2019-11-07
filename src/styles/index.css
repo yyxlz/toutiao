@@ -1,17 +1,21 @@
 .avatar-uploader {
   text-align: center;
 }
+
 .avatar-uploader .el-upload {
+ 
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
 }
+
 .avatar-uploader .el-upload:hover {
   border-color: #409EFF;
 }
-.avatar-uploader-icon {
+
+.avatar-uploader-icon11 {
   font-size: 28px;
   color: #8c939d;
   width: 178px;
@@ -19,8 +23,27 @@
   line-height: 178px;
   text-align: center;
 }
+
 .avatar {
   width: 178px;
   height: 178px;
   display: block;
+}
+
+.container-publish .ql-editor {
+  height: 300px;
+}
+
+.container-publish .ql-toolbar.ql-snow {
+  padding: 0;
+}
+
+.el-dialog__body {
+  padding-bottom: 0;
+}
+
+.avatar-uploader {
+  width: 150px;
+  height: 150px;
+  border: 1px solid red;
 }

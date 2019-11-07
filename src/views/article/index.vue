@@ -103,8 +103,8 @@ export default {
       reqParams: {
         status: null,
         channel_id: null,
-        per_page: 20,
-        page: 4,
+        per_page: 10,
+        page: 1,
         begin_pubdate: null,
         end_pubdate: null
       },
@@ -185,7 +185,7 @@ export default {
 //  做频道选项渲染
 </script>
 
-<style>
+<style scoped lang='less'>
 .headertext {
   font-size: 18px;
   font-weight: bolder;

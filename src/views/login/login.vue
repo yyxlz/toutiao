@@ -107,7 +107,7 @@ export default {
 /// 开始登陆功能
 </script>
 
-<style  scoped lang='less'>
+<style>
 .h1 {
   width: 100%;
   height: 100%;

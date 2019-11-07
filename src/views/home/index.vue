@@ -49,8 +49,8 @@
         <i class="el-icon-s-fold" @click="toggleMenu"></i>
         <span class="text">江苏传智播客科技教育有限公司</span>
         <el-dropdown :hide-on-click="false">
-          <span class="h2">
-            {{name}}
+          <span class="el-dropdown-link">
+            <span class="userName">{{ name }}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
@@ -68,6 +68,7 @@
 
 <script>
 import local from '../../utils/index'
+import eventBus from '../../eventBus'
 export default {
   data () {
     return {
@@ -89,9 +90,15 @@ export default {
     }
   },
   created () {
-    const user = local.getuser()
-    this.name = user.name
+    const user = local.getuser() || {}
     this.poto = user.poto
+    this.name = user.name
+    eventBus.$on('updateName', name => {
+      this.name = name
+    })
+    // eventBus.$on('updatePhoto', photo => {
+    //   this.photo = photo
+    // })
   }
 }
 </script>
@@ -142,7 +149,7 @@ export default {
   background-image: url(../../assets/logo_admin_01.png);
   background-size: 36px auto;
 }
-.h2 {
+.userName {
   margin-left: 5px;
   font-weight: bold;
   vertical-align: middle;
